@@ -1,5 +1,5 @@
 front = "어서오세요 맛있는음식점입니다.\n"
-menu = '   [메뉴판]\n 1.보쌈 : 30000\n 2.족발 : 25000\n 3.삼겹살 : 15000\n 4.제육볶음 : 9000\n5. 음료수 : 1000'
+menu = '   [메뉴판] \n 1.보쌈 : 30000\n 2.족발 : 25000\n 3.삼겹살 : 15000\n 4.제육볶음 : 9000\n 5. 음료수 : 1000\n'
 what = '무엇을 주문하시겠습니까? : '
 more = '주문을 더 하신다면 1번\n결제하시려면 2번을 눌러주세요 : '
 totalMsg = '총 계산금액은 '
@@ -9,8 +9,7 @@ name = ['보쌈', '족발', '삼겹살', '제육볶음', '음료수']
 price = [30000, 25000, 15000, 9000, 1000]
 
 order_menu = []  #주문서
-#현금,카드,삼성페이 잔액
-wallet = [50000,1000000,20000]  #지갑
+wallet = 50000 #지갑
 total = 0  #총 가격
 change = 0  #거스름돈
 
@@ -45,14 +44,9 @@ def order():
 def pay():
     count = 0
     while True:
-        choice = int(input(payment))
-        change = wallet[choice-1] - total
+        change = wallet - total
         if change < 0:
             print("잔액이 부족합니다.")
-            count += 1
-            if count == 2:
-                print("주문을 취소합니다. 다시 이용해주세요.")
-                break
         else:
             print("주문 내역은", order_menu,'입니다.')
             print('거스름돈은 ' + str(change) + '원 입니다.')
@@ -76,4 +70,3 @@ while True:
 #계산하기
 print('\n' + totalMsg + str(total) + '원 입니다.')
 pay()
-
